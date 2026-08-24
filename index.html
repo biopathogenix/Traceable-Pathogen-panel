@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioPathogenix | Traceable Pathogen Panels &amp; Molecular Research Supplies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0f2b52;
+    --navy-deep:#0a1d3a;
+    --navy-light:#1c3f6e;
+    --blue:#2f6fd6;
+    --gold:#eeb226;
+    --gold-dark:#d89c14;
+    --ink:#16283f;
+    --gray:#5c6b80;
+    --line:#dfe5ee;
+    --bg:#ffffff;
+    --bg-soft:#eef1f7;
+    --ph-bg:#e2e7f0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;}
+  img,svg{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+  section{padding:88px 0;}
+  .eyebrow{
+    display:flex;align-items:center;gap:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--blue);margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--blue);display:inline-block;}
+  .eyebrow.on-dark{color:#8fb4ec;}
+  .eyebrow.on-dark::before{background:#8fb4ec;}
+  h1,h2,h3,h4{color:var(--navy);font-weight:800;letter-spacing:-.01em;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 26px;border-radius:8px;font-weight:700;font-size:14.5px;
+    cursor:pointer;border:1.5px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-gold{background:var(--gold);color:var(--navy-deep);box-shadow:0 8px 20px rgba(238,178,38,.28);}
+  .btn-gold:hover{background:var(--gold-dark);}
+  .btn-outline{border-color:var(--line);color:var(--navy);background:#fff;}
+  .btn-outline:hover{border-color:var(--blue);color:var(--blue);}
+  .btn-outline-dark{border-color:rgba(255,255,255,.3);color:#fff;background:transparent;}
+  .btn-outline-dark:hover{border-color:#fff;background:rgba(255,255,255,.06);}
+
+  /* header */
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1200px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;color:var(--navy);}
+  .logo-img{height:34px;width:auto;}
+  .nav-links{display:flex;gap:34px;align-items:center;}
+  .nav-links a{font-size:14.5px;font-weight:600;color:var(--gray);transition:color .15s;}
+  .nav-links a:hover{color:var(--blue);}
+  .menu-toggle{display:none;background:none;border:none;font-size:24px;color:var(--navy);cursor:pointer;}
+
+  /* image placeholder blocks (art-direction spec style) */
+  .imgspec{
+    border-radius:12px;border:1px solid var(--line);
+    background:var(--ph-bg);overflow:hidden;
+  }
+  .imgspec .ph-area{
+    position:relative;aspect-ratio:8/5;
+    display:flex;align-items:flex-start;justify-content:space-between;
+    padding:14px;
+  }
+  .ph-tag{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;
+    color:var(--navy);background:#fff;border:1px solid var(--line);
+    padding:4px 10px;border-radius:6px;letter-spacing:.02em;
+  }
+  .ph-dim{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#8592a6;}
+  .ph-caption{padding:16px 18px;background:#fff;}
+  .ph-caption .cap-title{font-size:14.5px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .ph-caption .cap-sub{font-size:13px;color:var(--gray);}
+  .imgspec.dark{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);}
+  .imgspec.dark .ph-tag{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);color:#fff;}
+  .imgspec.dark .ph-dim{color:rgba(255,255,255,.45);}
+  .imgspec.dark .ph-caption{background:transparent;padding:18px 4px 0;}
+  .imgspec.dark .ph-caption .cap-title{color:#fff;}
+  .imgspec.dark .ph-caption .cap-sub{color:rgba(255,255,255,.65);}
+
+  /* hero */
+  .hero{padding:72px 0 88px;background:linear-gradient(180deg,#fff,var(--bg-soft));}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .hero h1{font-size:44px;line-height:1.15;margin-bottom:18px;}
+  .hero p{font-size:16.5px;color:var(--gray);max-width:520px;margin-bottom:28px;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* stat cards */
+  .stats{background:var(--bg-soft);}
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .stat-card{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:30px 26px;box-shadow:0 2px 6px rgba(15,43,82,.04);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .stat-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(15,43,82,.08);}
+  .stat-num{font-size:36px;font-weight:800;color:var(--navy);margin-bottom:14px;letter-spacing:-.02em;}
+  .stat-title{font-size:15.5px;font-weight:700;color:var(--blue);margin-bottom:12px;}
+  .stat-desc{font-size:13.5px;color:var(--gray);line-height:1.55;}
+
+  /* why labs choose */
+  .why h2{font-size:34px;line-height:1.2;margin-bottom:16px;}
+  .why > .container > p{font-size:16px;color:var(--gray);max-width:640px;margin-bottom:56px;}
+  .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:36px 28px;}
+  .feature{max-width:260px;}
+  .feature-icon{
+    width:56px;height:56px;border-radius:50%;background:var(--navy);
+    display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  }
+  .feature-icon svg{width:24px;height:24px;stroke:#fff;fill:none;}
+  .feature h4{font-size:16px;margin-bottom:8px;}
+  .feature p{font-size:13.5px;color:var(--gray);}
+
+  /* catalog */
+  .catalog{background:var(--bg-soft);}
+  .catalog h2{font-size:34px;line-height:1.2;margin-bottom:16px;}
+  .catalog > .container > p.lead{font-size:16px;color:var(--gray);max-width:600px;margin-bottom:52px;}
+  .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .prod-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+  .prod-card .imgspec{border:none;border-radius:0;}
+  .prod-body{padding:22px 22px 26px;}
+  .prod-body h3{font-size:18px;margin-bottom:10px;}
+  .prod-tags{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);margin-bottom:10px;letter-spacing:.01em;}
+  .prod-body p{font-size:13.5px;color:var(--gray);}
+
+  /* manufacturing */
+  .manufacturing{background:linear-gradient(160deg,var(--navy-deep),var(--navy) 70%);color:#fff;}
+  .mfg-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .manufacturing h2{color:#fff;font-size:34px;line-height:1.2;margin-bottom:18px;}
+  .mfg-highlight{color:var(--gold);font-weight:700;font-size:17px;line-height:1.4;margin-bottom:20px;}
+  .manufacturing p.body{color:rgba(255,255,255,.75);font-size:15.5px;margin-bottom:26px;max-width:480px;}
+  .mfg-check{display:flex;flex-direction:column;gap:14px;margin-bottom:30px;}
+  .mfg-check li{display:flex;gap:10px;align-items:flex-start;font-size:15px;font-weight:500;}
+  .mfg-check svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;color:#fff;}
+
+  /* contact / quote */
+  .quote{background:var(--bg-soft);}
+  .quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+  .quote h2{font-size:32px;line-height:1.2;margin-bottom:16px;}
+  .quote > .quote-grid > .quote-left > p{font-size:16px;color:var(--gray);max-width:460px;margin-bottom:28px;}
+  .quote-divider{border:none;border-top:1px solid var(--line);margin-bottom:22px;}
+  .contact-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);font-size:14.5px;}
+  .contact-row .label{font-family:'JetBrains Mono',monospace;font-size:12px;color:#8592a6;letter-spacing:.04em;}
+  .contact-row .value{font-weight:700;color:var(--navy);}
+  .quote-tagline{font-style:italic;color:var(--gray);font-size:14px;margin-top:20px;}
+  .form-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:34px;box-shadow:0 20px 40px -20px rgba(15,43,82,.15);}
+  .form-card h3{font-size:20px;margin-bottom:8px;}
+  .form-card > p{font-size:13.5px;color:var(--gray);margin-bottom:24px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  .field label{
+    display:block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;
+    letter-spacing:.05em;text-transform:uppercase;color:#8592a6;margin-bottom:7px;
+  }
+  .field input, .field select, .field textarea{
+    width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:8px;
+    font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);background:#fbfcfe;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none;border-color:var(--blue);}
+  .field textarea{resize:vertical;min-height:88px;}
+  .form-full{margin-bottom:16px;}
+  .form-card .btn-gold{width:100%;justify-content:center;margin-top:6px;margin-bottom:14px;}
+  .disclaimer{font-size:12px;color:#93a0b3;text-align:center;}
+
+  /* footer */
+  footer{background:var(--navy-deep);color:rgba(255,255,255,.6);padding:72px 0 32px;}
+  .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;}
+  .footer-logo{margin-bottom:16px;}
+  .footer-logo .logo-img{height:28px;}
+  .footer-brand p{font-size:14px;color:rgba(255,255,255,.55);max-width:300px;line-height:1.6;}
+  .footer-col h5{
+    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;color:#8fb4ec;margin-bottom:20px;
+  }
+  .footer-col ul{display:flex;flex-direction:column;gap:14px;}
+  .footer-col a{font-size:14.5px;color:rgba(255,255,255,.8);transition:color .15s;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+    padding-top:26px;border-top:1px solid rgba(255,255,255,.1);
+    font-size:13px;color:rgba(255,255,255,.45);
+  }
+  .footer-bottom .mono{font-family:'JetBrains Mono',monospace;font-size:12px;}
+
+  @media (max-width:980px){
+    .hero-grid, .mfg-grid, .quote-grid{grid-template-columns:1fr;}
+    .feature-grid{grid-template-columns:repeat(2,1fr);}
+    .card-grid{grid-template-columns:repeat(2,1fr);}
+    .stat-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:680px){
+    .nav-links{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:32px;}
+    section{padding:60px 0;}
+    .feature-grid{grid-template-columns:1fr;}
+    .card-grid{grid-template-columns:1fr;}
+    .stat-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .footer-bottom{flex-direction:column;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#" class="logo">
+      <img src="assets/biopathogenix-logo.svg" alt="BioPathogenix" class="logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#catalog">Solutions</a></li>
+      <li><a href="#why">Why BioPathogenix</a></li>
+      <li><a href="#manufacturing">Manufacturing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#assessment" class="btn btn-gold">Free Panel Assessment</a>
+    <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Traceable Pathogen Panels</div>
+      <h1>Molecular research supplies, built around how your lab actually runs.</h1>
+      <p>Authenticated biobank sourcing, in-house kit assembly, and QC release from one U.S. facility &mdash; so your team orders exactly what a study needs, with a scientist on the other end of every question.</p>
+      <div class="hero-actions">
+        <a href="#assessment" class="btn btn-gold">Free Panel Assessment</a>
+        <a href="#manufacturing" class="btn btn-outline">Talk to our team</a>
+      </div>
+    </div>
+    <div class="imgspec">
+      <div class="ph-area">
+        <span class="ph-tag">IMAGE 01</span>
+        <span class="ph-dim">1200 &times; 900</span>
+      </div>
+      <div class="ph-caption">
+        <div class="cap-title">Gloved hands loading a multiplex panel into a thermocycler</div>
+        <div class="cap-sub">Close, well-lit, hands-on-the-work &mdash; sets the tone as lab-first, not corporate stock.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container">
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">1,000+</div>
+        <div class="stat-title">Authenticated, traceable pathogens</div>
+        <div class="stat-desc">A biobank deep enough to source controls, contrived samples, and panel targets from one place.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-title">U.S. manufacturing, end to end</div>
+        <div class="stat-desc">Formulation, kit assembly, and QC release all happen in Nicholasville, Kentucky.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">No minimums</div>
+        <div class="stat-title">Order what the study needs</div>
+        <div class="stat-desc">Buy one kit or a hundred. Pilot work does not have to be sized around a vendor MOQ.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">Complete support</div>
+        <div class="stat-title">From the team that built your kit</div>
+        <div class="stat-desc">Troubleshooting, protocol questions, and optimisation help from scientists, not a queue.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="container">
+    <div class="eyebrow">Why Labs Choose BioPathogenix</div>
+    <h2>Built around how<br>your lab actually runs.</h2>
+    <p>Every part of our catalog is designed to be adapted &mdash; targets, formats, volumes, and support all bend to your workflow rather than the other way around.</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round">
+            <path d="M8 3c0 3.5 8 3.5 8 7.5S8 14.5 8 18s8 3.5 8 3"/>
+            <line x1="9" y1="6.2" x2="15" y2="6.2"/>
+            <line x1="8" y1="11" x2="16" y2="11"/>
+            <line x1="9" y1="17.8" x2="15" y2="17.8"/>
+          </svg>
+        </div>
+        <h4>Authenticated biobank</h4>
+        <p>1,000+ traceable pathogen strains available as controls, contrived samples, and panel targets.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <h4>Workflow-wide quality control</h4>
+        <p>Controls that cover the whole run, from extraction efficiency through amplification.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3l8 4v10l-8 4-8-4V7l8-4z"/>
+            <path d="M4 7l8 4 8-4"/>
+            <line x1="12" y1="11" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <h4>No-minimum ordering</h4>
+        <p>Buy one kit or a hundred. Pilot studies do not have to be sized around a vendor's MOQ.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 3v18"/>
+            <path d="M5 4h11l-2 4 2 4H5"/>
+          </svg>
+        </div>
+        <h4>100% U.S. manufacturing</h4>
+        <p>Produced and shipped from Nicholasville, Kentucky &mdash; short chains, documented provenance.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round">
+            <line x1="6" y1="4" x2="6" y2="20"/><circle cx="6" cy="10" r="2" fill="var(--navy)"/>
+            <line x1="12" y1="4" x2="12" y2="20"/><circle cx="12" cy="16" r="2" fill="var(--navy)"/>
+            <line x1="18" y1="4" x2="18" y2="20"/><circle cx="18" cy="7" r="2" fill="var(--navy)"/>
+          </svg>
+        </div>
+        <h4>Custom kit capabilities</h4>
+        <p>Add targets, change the mix, or have a kit assembled to your protocol and labelled to your spec.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2s7 8 7 13a7 7 0 01-14 0c0-5 7-13 7-13z"/>
+          </svg>
+        </div>
+        <h4>Flexible reagent formats</h4>
+        <p>Liquid or lyophilized, bulk or single-use &mdash; matched to your storage, shipping, and throughput.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 14v-2a8 8 0 0116 0v2"/>
+            <rect x="3" y="14" width="4" height="6" rx="1.5"/>
+            <rect x="17" y="14" width="4" height="6" rx="1.5"/>
+          </svg>
+        </div>
+        <h4>Support after delivery</h4>
+        <p>Troubleshooting, protocol questions, and optimization help from scientists, not a ticket queue.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 3h7l4 4v14H7z"/>
+            <line x1="9" y1="12" x2="15" y2="12"/>
+            <line x1="9" y1="16" x2="15" y2="16"/>
+          </svg>
+        </div>
+        <h4>One vendor, one PO</h4>
+        <p>Reagents, consumables, PPE, and instruments in a single order &mdash; fewer vendors to reconcile.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="catalog" id="catalog">
+  <div class="container">
+    <div class="eyebrow">Our Catalog</div>
+    <h2>Explore our molecular<br>research solutions.</h2>
+    <p class="lead">Five product families covering the full PCR process, from sample prep through detection.</p>
+    <div class="card-grid">
+      <div class="prod-card">
+        <div class="imgspec">
+          <div class="ph-area">
+            <span class="ph-tag">IMAGE 02</span>
+            <span class="ph-dim">800 &times; 500</span>
+          </div>
+          <div class="ph-caption">
+            <div class="cap-title">Sealed multiplex panel kit, overhead on white</div>
+            <div class="cap-sub">Product-forward, labelled tubes visible.</div>
+          </div>
+        </div>
+        <div class="prod-body">
+          <h3>Prebuilt Assays &amp; Panels</h3>
+          <div class="prod-tags">STI &middot; Respiratory &middot; GI / Enteric &middot; AMR &middot; + more</div>
+          <p>Ready-made molecular assays and multiplex panels for established research applications.</p>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="imgspec">
+          <div class="ph-area">
+            <span class="ph-tag">IMAGE 03</span>
+            <span class="ph-dim">800 &times; 500</span>
+          </div>
+          <div class="ph-caption">
+            <div class="cap-title">Scientist at a monitor, primer design software open</div>
+            <div class="cap-sub">Over-the-shoulder, sequence view legible.</div>
+          </div>
+        </div>
+        <div class="prod-body">
+          <h3>Custom Assay Development</h3>
+          <div class="prod-tags">Custom targets &middot; Multiplex panels &middot; Primer &amp; probe design &middot; Target additions</div>
+          <p>Assays developed around the targets and configurations your lab needs.</p>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="imgspec">
+          <div class="ph-area">
+            <span class="ph-tag">IMAGE 04</span>
+            <span class="ph-dim">800 &times; 500</span>
+          </div>
+          <div class="ph-caption">
+            <div class="cap-title">Cryovial rack lifted from a freezer</div>
+            <div class="cap-sub">Cold vapor and barcoded caps read as traceability.</div>
+          </div>
+        </div>
+        <div class="prod-body">
+          <h3>Controls &amp; Validation</h3>
+          <div class="prod-tags">External controls &middot; Instrument verification &middot; Analytical method validation &middot; Extraction controls</div>
+          <p>Tools and support to verify assay, workflow, and instrument performance.</p>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="imgspec">
+          <div class="ph-area">
+            <span class="ph-tag">IMAGE 05</span>
+            <span class="ph-dim">800 &times; 500</span>
+          </div>
+          <div class="ph-caption">
+            <div class="cap-title">Lyophilized reagent cake in a clear tube, macro</div>
+            <div class="cap-sub">White pellet against glass &mdash; specific to the format claim.</div>
+          </div>
+        </div>
+        <div class="prod-body">
+          <h3>Extraction &amp; Reagents</h3>
+          <div class="prod-tags">Nucleic acid extraction &middot; Direct detection &middot; Master mix &middot; Lyophilized reagents</div>
+          <p>Products that support sample preparation, amplification, and assay performance.</p>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="imgspec">
+          <div class="ph-area">
+            <span class="ph-tag">IMAGE 06</span>
+            <span class="ph-dim">800 &times; 500</span>
+          </div>
+          <div class="ph-caption">
+            <div class="cap-title">qPCR instrument mid-run, amplification plot on screen</div>
+            <div class="cap-sub">Angle so the curves are readable.</div>
+          </div>
+        </div>
+        <div class="prod-body">
+          <h3>Molecular Instruments</h3>
+          <div class="prod-tags">Extraction systems &middot; qPCR instruments &middot; Multiplex platforms</div>
+          <p>Instrumentation for key steps in molecular research workflows.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="manufacturing" id="manufacturing">
+  <div class="container mfg-grid">
+    <div>
+      <div class="eyebrow on-dark">Made in the U.S.</div>
+      <h2>Manufactured and<br>shipped from Kentucky.</h2>
+      <div class="mfg-highlight">Standard Panels Ship in 24hrs &mdash;<br>Custom Panels ship in 72hrs or less</div>
+      <p class="body">Reagent formulation, kit assembly, and QC release all happen under one roof &mdash; which is why we can turn custom configurations quickly and answer supply-chain questions with specifics.</p>
+      <ul class="mfg-check">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Lot traceability from raw material through release</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Documentation packages for procurement and supply-chain review</li>
+      </ul>
+      <a href="#contact" class="btn btn-gold">Talk to our team &rarr;</a>
+    </div>
+    <div class="imgspec dark">
+      <div class="ph-area">
+        <span class="ph-tag">IMAGE 07 &middot; FACILITY</span>
+        <span class="ph-dim">1800 &times; 1240</span>
+      </div>
+      <div class="ph-caption">
+        <div class="cap-title">U.S. manufacturing floor &mdash; reagent filling line under clean-room light</div>
+        <div class="cap-sub">Wide, slightly elevated angle showing gowned staff and equipment in sequence. This is the one shot that must read as a facility rather than a bench, since it carries the 100% U.S. manufacturing claim that procurement and supply-chain reviewers screen for.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote" id="contact">
+  <div class="container quote-grid">
+    <div class="quote-left">
+      <div class="eyebrow">Request a Quote</div>
+      <h2>Tell us what you are<br>trying to detect.</h2>
+      <p>Share your targets, sample matrix, or product interest and a BioPathogenix scientist will follow up with the right configuration and pricing &mdash; usually within one business day.</p>
+      <hr class="quote-divider">
+      <div class="contact-row"><span class="label">EMAIL</span><span class="value">Order@BioPathogenix.com</span></div>
+      <div class="contact-row"><span class="label">PHONE</span><span class="value">(859) 444-5660</span></div>
+      <div class="contact-row"><span class="label">ADDRESS</span><span class="value">3004 Park Central Avenue, Nicholasville, KY 40356</span></div>
+      <div class="quote-tagline">Simplifying lab workflows &middot; Bridging knowledge &amp; practice &middot; Driving innovation</div>
+    </div>
+    <div class="form-card" id="assessment">
+      <h3>Free Panel Assessment</h3>
+      <p>Fields marked optional can be left blank &mdash; we will follow up for anything else we need.</p>
+      <form onsubmit="return false;">
+        <div class="form-row">
+          <div class="field"><label>Full Name</label><input type="text" name="name" required></div>
+          <div class="field"><label>Work Email</label><input type="email" name="email" required></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Organization</label><input type="text" name="org"></div>
+          <div class="field"><label>Phone (optional)</label><input type="tel" name="phone"></div>
+        </div>
+        <div class="field form-full">
+          <label>Area of Interest</label>
+          <select name="interest">
+            <option value="">Select an area...</option>
+            <option>Prebuilt Assays &amp; Panels</option>
+            <option>Custom Assay Development</option>
+            <option>Controls &amp; Validation</option>
+            <option>Extraction &amp; Reagents</option>
+            <option>Molecular Instruments</option>
+          </select>
+        </div>
+        <div class="field form-full">
+          <label>Targets, sample matrix, or research needs</label>
+          <textarea placeholder="e.g. 12-target GI panel, stool in transport medium, ~400 samples/month"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold">Request My Free Assessment</button>
+        <div class="disclaimer">For Research Use Only. Not for use in diagnostic procedures.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo footer-logo">
+          <img src="assets/biopathogenix-logo-white.svg" alt="BioPathogenix" class="logo-img">
+        </a>
+        <p>Simplifying lab workflows &middot; Bridging knowledge &amp; practice &middot; Driving innovation</p>
+      </div>
+      <div class="footer-col">
+        <h5>Solutions</h5>
+        <ul>
+          <li><a href="#catalog">Prebuilt assays &amp; panels</a></li>
+          <li><a href="#catalog">Custom assay development</a></li>
+          <li><a href="#catalog">Controls &amp; validation</a></li>
+          <li><a href="#catalog">Extraction &amp; reagents</a></li>
+          <li><a href="#catalog">Molecular instruments</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#why">Why BioPathogenix</a></li>
+          <li><a href="#manufacturing">U.S. manufacturing</a></li>
+          <li><a href="#assessment">Free panel assessment</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:Order@BioPathogenix.com">Order@BioPathogenix.com</a></li>
+          <li><a href="tel:+18594445660">(859) 444-5660</a></li>
+          <li><a href="#">3004 Park Central Avenue<br>Nicholasville, KY 40356</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BioPathogenix. All rights reserved.</span>
+      <span class="mono">For Research Use Only. Not for use in diagnostic procedures.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
