@@ -98,13 +98,14 @@
   .imgspec.dark .ph-caption .cap-sub{color:rgba(255,255,255,.65);}
 
   /* hero */
-  .hero{
-    padding:110px 0 130px;
-    position:relative;
-    background:
-      linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.9) 40%,rgba(255,255,255,.4) 62%,rgba(255,255,255,.15) 100%),
-      url('assets/BPX Landing Page Hero Section BG.jpg') center/cover no-repeat;
+  .hero{padding:110px 0 130px;position:relative;overflow:hidden;background:#fff;}
+  .hero-bg{position:absolute;inset:0;z-index:0;}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:brightness(1.12) saturate(1.08);}
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.78) 38%,rgba(255,255,255,.15) 62%,rgba(255,255,255,0) 100%);
   }
+  .hero .container{position:relative;z-index:1;}
   .hero-copy{max-width:560px;}
   .hero h1{font-size:44px;line-height:1.15;margin-bottom:18px;}
   .hero p{font-size:16.5px;color:var(--gray);max-width:520px;margin-bottom:28px;}
@@ -251,6 +252,9 @@
 </header>
 
 <section class="hero">
+  <div class="hero-bg">
+    <img src="assets/BPX Landing Page Hero Section BG.jpg" alt="">
+  </div>
   <div class="container">
     <div class="hero-copy">
       <div class="eyebrow">Traceable Pathogen Panels</div>
