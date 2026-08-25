@@ -98,11 +98,22 @@
   .imgspec.dark .ph-caption .cap-sub{color:rgba(255,255,255,.65);}
 
   /* hero */
-  .hero{padding:72px 0 88px;background:linear-gradient(180deg,#fff,var(--bg-soft));}
+  .hero{
+    padding:72px 0 88px;
+    position:relative;
+    background:
+      linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.9) 32%,rgba(255,255,255,.35) 58%,rgba(255,255,255,.15) 100%),
+      url('assets/BPX Landing Page Hero Section BG.jpg') center/cover no-repeat;
+  }
   .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
   .hero h1{font-size:44px;line-height:1.15;margin-bottom:18px;}
   .hero p{font-size:16.5px;color:var(--gray);max-width:520px;margin-bottom:28px;}
   .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-img{border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 56px -24px rgba(15,43,82,.3);background:#fff;}
+  .hero-img img{width:100%;aspect-ratio:8/5;object-fit:cover;object-position:right center;display:block;}
+
+  /* divider between hero and stat cards */
+  .section-divider{height:1px;margin:8px 0 0;background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent);}
 
   /* stat cards */
   .stats{background:var(--bg-soft);}
@@ -137,6 +148,8 @@
   .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
   .prod-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
   .prod-card .imgspec{border:none;border-radius:0;}
+  .prod-img{aspect-ratio:8/5;overflow:hidden;background:var(--ph-bg);}
+  .prod-img img{width:100%;height:100%;object-fit:cover;display:block;}
   .prod-body{padding:22px 22px 26px;}
   .prod-body h3{font-size:18px;margin-bottom:10px;}
   .prod-tags{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);margin-bottom:10px;letter-spacing:.01em;}
@@ -250,18 +263,13 @@
         <a href="#manufacturing" class="btn btn-outline">Talk to our team</a>
       </div>
     </div>
-    <div class="imgspec">
-      <div class="ph-area">
-        <span class="ph-tag">IMAGE 01</span>
-        <span class="ph-dim">1200 &times; 900</span>
-      </div>
-      <div class="ph-caption">
-        <div class="cap-title">Gloved hands loading a multiplex panel into a thermocycler</div>
-        <div class="cap-sub">Close, well-lit, hands-on-the-work &mdash; sets the tone as lab-first, not corporate stock.</div>
-      </div>
+    <div class="hero-img">
+      <img src="assets/BPX Landing Page Hero Section BG.jpg" alt="Scientist in a molecular research lab loading a multiplex panel">
     </div>
   </div>
 </section>
+
+<div class="container"><div class="section-divider"></div></div>
 
 <section class="stats">
   <div class="container">
@@ -392,15 +400,8 @@
     <p class="lead">Five product families covering the full PCR process, from sample prep through detection.</p>
     <div class="card-grid">
       <div class="prod-card">
-        <div class="imgspec">
-          <div class="ph-area">
-            <span class="ph-tag">IMAGE 02</span>
-            <span class="ph-dim">800 &times; 500</span>
-          </div>
-          <div class="ph-caption">
-            <div class="cap-title">Sealed multiplex panel kit, overhead on white</div>
-            <div class="cap-sub">Product-forward, labelled tubes visible.</div>
-          </div>
+        <div class="prod-img">
+          <img src="assets/image 1.png" alt="Sealed multiplex panel kit, overhead on white">
         </div>
         <div class="prod-body">
           <h3>Prebuilt Assays &amp; Panels</h3>
@@ -409,15 +410,8 @@
         </div>
       </div>
       <div class="prod-card">
-        <div class="imgspec">
-          <div class="ph-area">
-            <span class="ph-tag">IMAGE 03</span>
-            <span class="ph-dim">800 &times; 500</span>
-          </div>
-          <div class="ph-caption">
-            <div class="cap-title">Scientist at a monitor, primer design software open</div>
-            <div class="cap-sub">Over-the-shoulder, sequence view legible.</div>
-          </div>
+        <div class="prod-img">
+          <img src="assets/image 2.png" alt="Custom-labelled contrived sample kit with control vial">
         </div>
         <div class="prod-body">
           <h3>Custom Assay Development</h3>
@@ -426,15 +420,8 @@
         </div>
       </div>
       <div class="prod-card">
-        <div class="imgspec">
-          <div class="ph-area">
-            <span class="ph-tag">IMAGE 04</span>
-            <span class="ph-dim">800 &times; 500</span>
-          </div>
-          <div class="ph-caption">
-            <div class="cap-title">Cryovial rack lifted from a freezer</div>
-            <div class="cap-sub">Cold vapor and barcoded caps read as traceability.</div>
-          </div>
+        <div class="prod-img">
+          <img src="assets/image 3.png" alt="Gloved hand placing a labelled control vial into a sample rack">
         </div>
         <div class="prod-body">
           <h3>Controls &amp; Validation</h3>
@@ -443,15 +430,8 @@
         </div>
       </div>
       <div class="prod-card">
-        <div class="imgspec">
-          <div class="ph-area">
-            <span class="ph-tag">IMAGE 05</span>
-            <span class="ph-dim">800 &times; 500</span>
-          </div>
-          <div class="ph-caption">
-            <div class="cap-title">Lyophilized reagent cake in a clear tube, macro</div>
-            <div class="cap-sub">White pellet against glass &mdash; specific to the format claim.</div>
-          </div>
+        <div class="prod-img">
+          <img src="assets/image 4.png" alt="Gloved hand holding a 96-well PCR plate">
         </div>
         <div class="prod-body">
           <h3>Extraction &amp; Reagents</h3>
@@ -460,15 +440,8 @@
         </div>
       </div>
       <div class="prod-card">
-        <div class="imgspec">
-          <div class="ph-area">
-            <span class="ph-tag">IMAGE 06</span>
-            <span class="ph-dim">800 &times; 500</span>
-          </div>
-          <div class="ph-caption">
-            <div class="cap-title">qPCR instrument mid-run, amplification plot on screen</div>
-            <div class="cap-sub">Angle so the curves are readable.</div>
-          </div>
+        <div class="prod-img">
+          <img src="assets/image 5.png" alt="Benchtop molecular extraction instrument">
         </div>
         <div class="prod-body">
           <h3>Molecular Instruments</h3>
