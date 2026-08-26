@@ -189,7 +189,13 @@
   .field input:focus, .field select:focus, .field textarea:focus{outline:none;border-color:var(--blue);}
   .field textarea{resize:vertical;min-height:88px;}
   .form-full{margin-bottom:16px;}
+  .field-honeypot{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
   .form-card .btn-gold{width:100%;justify-content:center;margin-top:6px;margin-bottom:14px;}
+  .form-card .btn-gold:disabled{opacity:.65;cursor:not-allowed;transform:none;}
+  .form-status{font-size:13.5px;text-align:center;margin-bottom:12px;min-height:0;display:none;padding:10px 14px;border-radius:8px;}
+  .form-status.visible{display:block;}
+  .form-status.success{background:#eaf7ee;color:#1e7d3a;border:1px solid #bfe6cb;}
+  .form-status.error{background:#fdecec;color:#b3261e;border:1px solid #f5c6c4;}
   .disclaimer{font-size:12px;color:#93a0b3;text-align:center;}
 
   /* footer */
@@ -441,7 +447,7 @@
     <div class="form-card" id="assessment">
       <h3>Free Panel Assessment</h3>
       <p>Fields marked optional can be left blank &mdash; we will follow up for anything else we need.</p>
-      <form onsubmit="return false;">
+      <form id="assessment-form" novalidate>
         <div class="form-row">
           <div class="field"><label>Full Name</label><input type="text" name="name" required></div>
           <div class="field"><label>Work Email</label><input type="email" name="email" required></div>
@@ -463,9 +469,14 @@
         </div>
         <div class="field form-full">
           <label>Targets, sample matrix, or research needs</label>
-          <textarea placeholder="e.g. 12-target GI panel, stool in transport medium, ~400 samples/month"></textarea>
+          <textarea name="message" placeholder="e.g. 12-target GI panel, stool in transport medium, ~400 samples/month"></textarea>
+        </div>
+        <div class="field-honeypot" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
         </div>
         <button type="submit" class="btn btn-gold">Request My Free Assessment</button>
+        <div class="form-status" id="assessment-status" role="status" aria-live="polite"></div>
         <div class="disclaimer">For Research Use Only. Not for use in diagnostic procedures.</div>
       </form>
     </div>
@@ -515,5 +526,56 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var form = document.getElementById('assessment-form');
+  if (!form) return;
+  var status = document.getElementById('assessment-status');
+  var button = form.querySelector('button[type="submit"]');
+  var originalLabel = button.textContent;
+
+  function showStatus(kind, message){
+    status.textContent = message;
+    status.className = 'form-status visible ' + kind;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    var name = form.elements['name'].value.trim();
+    var email = form.elements['email'].value.trim();
+    if (!name || !email){
+      showStatus('error', 'Please fill in your name and work email.');
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = 'Sending…';
+    status.className = 'form-status';
+
+    fetch('mail/send-quote.php', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function(res){ return res.json().catch(function(){ return { success:false, message:'Unexpected response from server.' }; }); })
+      .then(function(data){
+        if (data.success){
+          showStatus('success', data.message || 'Thanks — we will be in touch shortly.');
+          form.reset();
+        } else {
+          showStatus('error', data.message || 'Something went wrong. Please try again.');
+        }
+      })
+      .catch(function(){
+        showStatus('error', 'Something went wrong sending your request. Please email Order@BioPathogenix.com directly.');
+      })
+      .finally(function(){
+        button.disabled = false;
+        button.textContent = originalLabel;
+      });
+  });
+})();
+</script>
 </body>
 </html>
