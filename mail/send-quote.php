@@ -78,6 +78,14 @@ function bpx_configure_smtp(PHPMailer $mail, array $config): void
     $mail->CharSet    = 'UTF-8';
 }
 
+function bpx_attach_logo(PHPMailer $mail): void
+{
+    $logoPath = __DIR__ . '/assets/biopathogenix-logo-email.png';
+    if (is_file($logoPath)) {
+        $mail->addEmbeddedImage($logoPath, 'bpx-logo', 'biopathogenix-logo.png');
+    }
+}
+
 try {
     // 1. Notification to the BioPathogenix team.
     $mail = new PHPMailer(true);
@@ -85,6 +93,7 @@ try {
     $mail->setFrom($config['from_email'], $config['from_name']);
     $mail->addAddress($config['to_email'], $config['to_name']);
     $mail->addReplyTo($email, $name);
+    bpx_attach_logo($mail);
 
     $notification = bpx_notification_email($fields);
     $mail->isHTML(true);
@@ -100,6 +109,7 @@ try {
             bpx_configure_smtp($confirm, $config);
             $confirm->setFrom($config['from_email'], $config['from_name']);
             $confirm->addAddress($email, $name);
+            bpx_attach_logo($confirm);
 
             $confirmation = bpx_confirmation_email($name);
             $confirm->isHTML(true);

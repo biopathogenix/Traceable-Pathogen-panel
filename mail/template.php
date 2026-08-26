@@ -34,8 +34,8 @@ function bpx_email_shell(string $eyebrow, string $title, string $bodyHtml): stri
             <td style="background:linear-gradient(160deg,{$navyDeep},{$navy});background-color:{$navyDeep};padding:28px 32px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td style="font-size:19px;font-weight:800;color:#ffffff;letter-spacing:-.01em;">
-                    Bio<span style="color:{$gold};">Pathogenix</span>
+                  <td>
+                    <img src="cid:bpx-logo" width="176" alt="BioPathogenix" style="display:block;width:176px;height:auto;border:0;">
                   </td>
                 </tr>
               </table>
