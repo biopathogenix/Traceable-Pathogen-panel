@@ -534,8 +534,8 @@
   // Pages can't run server code, so EmailJS sends directly from the
   // browser through the Outlook account connected in its dashboard —
   // no password ever lives in this file or the repo.
-  var EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
-  var EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+  var EMAILJS_PUBLIC_KEY = 'L_TYTgQHJW3RjaYjX';
+  var EMAILJS_SERVICE_ID = 'panel_assesment';
   var EMAILJS_TEMPLATE_NOTIFICATION = 'YOUR_TEMPLATE_ID_NOTIFICATION';
   var EMAILJS_TEMPLATE_CONFIRMATION = 'YOUR_TEMPLATE_ID_CONFIRMATION';
 
@@ -545,7 +545,12 @@
   var button = form.querySelector('button[type="submit"]');
   var originalLabel = button.textContent;
 
-  if (window.emailjs && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+  var isConfigured = EMAILJS_PUBLIC_KEY.indexOf('YOUR_') !== 0 &&
+    EMAILJS_SERVICE_ID.indexOf('YOUR_') !== 0 &&
+    EMAILJS_TEMPLATE_NOTIFICATION.indexOf('YOUR_') !== 0 &&
+    EMAILJS_TEMPLATE_CONFIRMATION.indexOf('YOUR_') !== 0;
+
+  if (window.emailjs && isConfigured) {
     emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
   }
 
@@ -571,7 +576,7 @@
       return;
     }
 
-    if (!window.emailjs || EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+    if (!window.emailjs || !isConfigured) {
       showStatus('error', 'The form is not fully configured yet. Please email Order@BioPathogenix.com directly.');
       return;
     }
