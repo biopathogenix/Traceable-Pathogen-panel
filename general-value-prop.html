@@ -424,7 +424,7 @@
       </div>
 
       <div class="footer-col">
-        <h5>solutions</h5>
+        <h5>Custom Applications</h5>
         <ul>
           <li><a href="#process">Prebuilt Assays & Panels</a></li>
           <li><a href="#process">Custom Assay Development</a></li>
@@ -503,8 +503,7 @@
 
       // Honeypot: a hidden field real users never fill in. Bots usually do.
       if (form.elements['website'] && form.elements['website'].value){
-        showStatus('success', 'Thanks — a BioPathogenix scientist will follow up shortly.');
-        form.reset();
+        window.location.href = 'bpx-thank-you.html';
         return;
       }
 
@@ -536,14 +535,11 @@
           });
         })
         .then(function(){
-          showStatus('success', 'Thanks — a BioPathogenix scientist will follow up shortly.');
-          form.reset();
+          window.location.href = 'bpx-thank-you.html';
         })
         .catch(function(err){
           console.error('BioPathogenix: notification email failed', err);
           showStatus('error', 'Something went wrong sending your request. Please email Order@BioPathogenix.com directly.');
-        })
-        .finally(function(){
           button.disabled = false;
           button.textContent = originalLabel;
         });
