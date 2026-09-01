@@ -50,6 +50,8 @@ a{color:inherit;text-decoration:none;}
 .ruo{
   font-family:'JetBrains Mono',ui-monospace,"Courier New",monospace;
   font-size:11px;letter-spacing:.02em;color:var(--mute);
+  /* never justified — monospace stretches into visible gaps */
+  text-align:left;
 }
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
@@ -99,6 +101,8 @@ a{color:inherit;text-decoration:none;}
   color:var(--navy);margin-bottom:20px;max-width:460px;
 }
 .hero p{font-size:15.5px;color:var(--gray);margin-bottom:16px;max-width:500px;}
+/* body copy only — the RUO line is monospace and must stay flush left */
+.hero p:not(.ruo){text-align:justify;}
 .hero p strong{color:var(--navy);font-weight:700;}
 .hero p a{color:var(--blue);font-weight:600;border-bottom:1px solid rgba(47,111,214,.3);}
 .hero p a:hover{border-bottom-color:var(--blue);}
@@ -113,7 +117,7 @@ a{color:inherit;text-decoration:none;}
   font-size:37px;line-height:1.18;font-weight:800;letter-spacing:-.015em;
   color:var(--navy);margin-bottom:14px;
 }
-.next .lead{font-size:15.5px;color:var(--gray);max-width:420px;margin-bottom:44px;}
+.next .lead{font-size:15.5px;color:var(--gray);max-width:420px;margin-bottom:44px;text-align:justify;}
 .next-grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
   margin-bottom:56px;
@@ -151,7 +155,7 @@ a{color:inherit;text-decoration:none;}
   font-size:34px;line-height:1.2;font-weight:800;letter-spacing:-.015em;
   color:var(--navy);margin-bottom:26px;
 }
-.reach .lead{font-size:15.5px;color:var(--gray);max-width:520px;margin-bottom:36px;}
+.reach .lead{font-size:15.5px;color:var(--gray);max-width:520px;margin-bottom:36px;text-align:justify;}
 
 .contact-list{list-style:none;max-width:600px;margin-bottom:30px;}
 .contact-list li{
