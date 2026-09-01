@@ -289,12 +289,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="field"><label for="e1">Work Email</label><input id="e1" type="email" name="email" required></div>
           </div>
           <div class="form-row">
-            <div class="field"><label for="o1">Organization</label><input id="o1" type="text" name="org"></div>
+            <div class="field"><label for="o1">Organization (optional)</label><input id="o1" type="text" name="org"></div>
             <div class="field"><label for="p1">Phone (optional)</label><input id="p1" type="tel" name="phone"></div>
           </div>
           <div class="field form-full">
             <label for="a1">Application Area</label>
-            <select id="a1" name="interest">
+            <select id="a1" name="interest" required>
               <option value="">Select an application...</option>
               <option>AMR / ABR</option>
               <option>Emerging Pathogens</option>
@@ -306,7 +306,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="field form-full">
             <label for="t1">Targets &amp; multiplex format</label>
-            <textarea id="t1" name="message" placeholder="e.g. 6-target AMR panel, single tube, carbapenemase genes"></textarea>
+            <textarea id="t1" name="message" placeholder="e.g. 6-target AMR panel, single tube, carbapenemase genes" required></textarea>
           </div>
           <div class="field-honeypot" aria-hidden="true">
             <label for="website1">Website</label>
@@ -496,8 +496,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       var name = form.elements['name'].value.trim();
       var email = form.elements['email'].value.trim();
-      if (!name || !email){
-        showStatus('error', 'Please fill in your name and work email.');
+      var interest = form.elements['interest'] ? form.elements['interest'].value : '';
+      var message = form.elements['message'] ? form.elements['message'].value.trim() : '';
+      // Organization and phone stay optional; the rest are required. The form
+      // is novalidate, so the required attributes are for assistive tech and
+      // this check is what actually blocks an incomplete submission.
+      if (!name || !email || !interest || !message){
+        showStatus('error', 'Please fill in your name, work email, application area, and targets.');
         return;
       }
 
@@ -517,8 +522,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         email: email,
         org: form.elements['org'].value.trim(),
         phone: form.elements['phone'].value.trim(),
-        interest: form.elements['interest'] ? form.elements['interest'].value : '',
-        message: form.elements['message'] ? form.elements['message'].value.trim() : ''
+        interest: interest,
+        message: message
       };
 
       button.disabled = true;
