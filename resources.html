@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources &amp; Downloads | BioPathogenix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0f2b52;
+    --navy-deep:#0a1d3a;
+    --blue:#2f6fd6;
+    --gold:#eeb226;
+    --gold-dark:#d89c14;
+    --ink:#16283f;
+    --gray:#5c6b80;
+    --line:#dfe5ee;
+    --bg:#ffffff;
+    --bg-soft:#eef1f7;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.55;
+  }
+  img,svg{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  .container{max-width:1000px;margin:0 auto;padding:0 24px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1200px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;color:var(--navy);}
+  .logo-img{height:34px;width:auto;}
+  .nav-links{display:flex;gap:34px;align-items:center;}
+  .nav-links a{font-size:14.5px;font-weight:600;color:var(--gray);transition:color .15s;}
+  .nav-links a:hover{color:var(--blue);}
+
+  .eyebrow{
+    display:flex;align-items:center;gap:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--blue);margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--blue);display:inline-block;}
+
+  .page-head{padding:72px 0 48px;}
+  .page-head h1{font-size:38px;line-height:1.2;color:var(--navy);font-weight:800;letter-spacing:-.01em;margin-bottom:14px;}
+  .page-head p{font-size:16px;color:var(--gray);max-width:600px;}
+
+  .res-list{padding-bottom:96px;display:flex;flex-direction:column;gap:20px;}
+  .res-card{
+    display:flex;align-items:center;gap:22px;
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:26px 28px;box-shadow:0 2px 6px rgba(15,43,82,.04);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .res-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(15,43,82,.08);}
+  .res-icon{
+    flex-shrink:0;width:52px;height:52px;border-radius:10px;
+    background:var(--bg-soft);display:flex;align-items:center;justify-content:center;
+  }
+  .res-icon svg{width:24px;height:24px;color:var(--blue);}
+  .res-body{flex:1;min-width:0;}
+  .res-body h3{font-size:17.5px;color:var(--navy);font-weight:700;margin-bottom:6px;}
+  .res-body p{font-size:13.5px;color:var(--gray);}
+  .res-meta{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#8592a6;margin-top:8px;letter-spacing:.02em;}
+  .btn{
+    flex-shrink:0;
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:8px;font-weight:700;font-size:14px;
+    cursor:pointer;border:1.5px solid transparent;
+    background:var(--gold);color:var(--navy-deep);
+    box-shadow:0 8px 20px rgba(238,178,38,.28);
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);background:var(--gold-dark);}
+  .btn svg{width:16px;height:16px;}
+
+  footer{background:var(--navy-deep);color:rgba(255,255,255,.6);padding:40px 0;}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+    font-size:13px;color:rgba(255,255,255,.45);max-width:1200px;margin:0 auto;padding:0 24px;
+  }
+  .footer-bottom a{color:rgba(255,255,255,.8);}
+  .footer-bottom .mono{font-family:'JetBrains Mono',monospace;font-size:12px;}
+
+  @media (max-width:640px){
+    .page-head h1{font-size:29px;}
+    .res-card{flex-direction:column;align-items:flex-start;}
+    .btn{width:100%;justify-content:center;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="logo">
+      <img src="assets/biopathogenix-logo.svg" alt="BioPathogenix" class="logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#catalog">Solutions</a></li>
+      <li><a href="index.html#why">Why BioPathogenix</a></li>
+      <li><a href="index.html#manufacturing">Manufacturing</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-head">
+  <div class="container">
+    <div class="eyebrow">Resources &amp; Downloads</div>
+    <h1>Guides built for the molecular&nbsp;bench.</h1>
+    <p>Practical, no-signup PDF guides on cost control, qPCR workflow planning, and sample-to-answer configuration. Free to download and share with your team.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container res-list">
+
+    <div class="res-card">
+      <div class="res-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      </div>
+      <div class="res-body">
+        <h3>The Lean Lab Playbook</h3>
+        <p>Cost control &amp; efficiency strategies for the modern molecular lab &mdash; reimbursement pressure, the four waste categories, and practical strategies that move the needle.</p>
+        <div class="res-meta">PDF &middot; Lab management &amp; cost control</div>
+      </div>
+      <a class="btn" href="assets/downloads/Lean-Lab-Playbook.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+        Download
+      </a>
+    </div>
+
+    <div class="res-card">
+      <div class="res-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      </div>
+      <div class="res-body">
+        <h3>From Sample to Answer: qPCR Workflow Guide</h3>
+        <p>The complete qPCR molecular workflow across all five stages &mdash; collection, extraction, reaction setup, amplification, and controls &mdash; with the configuration choices that change the work.</p>
+        <div class="res-meta">PDF &middot; qPCR workflow reference</div>
+      </div>
+      <a class="btn" href="assets/downloads/BPX-Sample-to-Answer-Guide.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+        Download
+      </a>
+    </div>
+
+    <div class="res-card">
+      <div class="res-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      </div>
+      <div class="res-body">
+        <h3>The Complete qPCR Workflow Checklist</h3>
+        <p>A pre-order checklist across all five workflow components, with the three configuration routes compared and the items labs most commonly miss before ordering.</p>
+        <div class="res-meta">PDF &middot; Pre-order planning checklist</div>
+      </div>
+      <a class="btn" href="assets/downloads/BPX-Pre-Order-Checklist.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+        Download
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <span>&copy; 2026 BioPathogenix. All rights reserved.</span>
+    <span class="mono">For Research Use Only. Not for use in diagnostic procedures.</span>
+  </div>
+</footer>
+
+</body>
+</html>
