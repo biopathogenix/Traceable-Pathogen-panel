@@ -493,7 +493,7 @@
 
       // Honeypot: a hidden field real users never fill in. Bots usually do.
       if (form.elements['website'] && form.elements['website'].value){
-        window.location.href = 'bpx-thank-you.html';
+        window.location.href = 'bpx-thank-you-custom-assay.html';
         return;
       }
 
@@ -525,7 +525,7 @@
           });
         })
         .then(function(){
-          window.location.href = 'bpx-thank-you.html';
+          window.location.href = 'bpx-thank-you-custom-assay.html';
         })
         .catch(function(err){
           console.error('BioPathogenix: notification email failed', err);
